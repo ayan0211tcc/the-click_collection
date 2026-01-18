@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Click Collection | Photo & Video</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#0b0b0b;
+      color:#ffffff;
+      line-height:1.6;
+    }
+
+    /* HEADER */
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 60px;
+      background:rgba(0,0,0,0.8);
+      position:sticky;
+      top:0;
+      z-index:100;
+      backdrop-filter: blur(10px);
+    }
+
+    header h1{
+      font-size:1.5rem;
+      font-weight:600;
+      letter-spacing:1px;
+    }
+
+    nav a{
+      margin-left:25px;
+      text-decoration:none;
+      color:#fff;
+      font-size:0.9rem;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#f0c040;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:90vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:40px;
+      background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),url('https://images.unsplash.com/photo-1492724441997-5dc865305da7');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero h2{
+      font-size:2.8rem;
+      font-weight:600;
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      color:#ddd;
+      max-width:600px;
+      margin-bottom:30px;
+    }
+
+    .hero button{
+      padding:14px 36px;
+      font-size:1rem;
+      border:none;
+      border-radius:30px;
+      background:#f0c040;
+      color:#000;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .hero button:hover{
+      transform:scale(1.05);
+      background:#ffd86a;
+    }
+
+    /* SECTION */
+    section{
+      padding:80px 60px;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    section h2{
+      text-align:center;
+      font-size:2rem;
+      margin-bottom:40px;
+    }
+
+    /* GALLERY */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:20px;
+    }
+
+    .gallery img,.gallery video{
+      width:100%;
+      border-radius:15px;
+      transition:0.4s;
+    }
+
+    .gallery img:hover,.gallery video:hover{
+      transform:scale(1.03);
+    }
+
+    /* ABOUT */
+    .about{
+      text-align:center;
+      max-width:800px;
+    }
+
+    .about p{
+      color:#ccc;
+      font-size:1rem;
+    }
+
+    /* CONTACT */
+    .contact{
+      text-align:center;
+    }
+
+    .contact p{
+      margin-bottom:10px;
+      color:#ccc;
+    }
+
+    .contact a{
+      display:inline-block;
+      margin:10px;
+      padding:12px 26px;
+      background:#f0c040;
+      color:#000;
+      text-decoration:none;
+      border-radius:30px;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    .contact a:hover{
+      background:#ffd86a;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:25px;
+      text-align:center;
+      background:#000;
+      color:#777;
+      font-size:0.85rem;
+    }
+
+    /* HIRE POPUP */
+    #hireBox{
+      display:none;
+      position:fixed;
+      top:0;left:0;
+      width:100%;height:100%;
+      background:rgba(0,0,0,0.8);
+      z-index:200;
+    }
+
+    #hireBox .box{
+      background:#111;
+      max-width:420px;
+      margin:120px auto;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+    }
+
+    #hireBox h3{
+      margin-bottom:10px;
+    }
+
+    #hireBox p{
+      color:#ccc;
+      margin-bottom:15px;
+    }
+
+    #hireBox a{
+      color:#f0c040;
+      text-decoration:none;
+      display:block;
+      margin:8px 0;
+    }
+
+    #hireBox button{
+      margin-top:20px;
+      padding:8px 24px;
+      border:none;
+      border-radius:20px;
+      background:#333;
+      color:#fff;
+      cursor:pointer;
+    }
+
+    @media(max-width:768px){
+      header{padding:20px;}
+      section{padding:60px 20px;}
+      .hero h2{font-size:2rem;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <img src="media/logo.png" alt="The Click Collection Logo" style="height:60px;">
+    <h1>The Click Collection</h1>
+  </div>
+
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Photography / Videography & Editing for You</h2>
+  <p>We Shoot, We Edit, You Enjoy</p>
+  <button onclick="openHire()">Hire Us</button>
+</section>
+
+<section id="work">
+  <h2>Our Work</h2>
+  <div class="gallery">
+    <img src="media/photo.jpg" alt="Work" onclick="openLightbox(this.src)">
+    <img src="media/photo1.jpg" alt="Work" onclick="openLightbox(this.src)">
+    <img src="media/photo2.jpg" alt="Work" onclick="openLightbox(this.src)">
+    <video src="media/video1.mp4" controls></video>
+  </div>
+</section>
+
+<!-- Image Lightbox -->
+<div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:300; align-items:center; justify-content:center;">
+  <img id="lightboxImg" src="" style="max-width:90%; max-height:90%; border-radius:15px;">
+</div>
+<!-- Image Lightbox -->
+<div id="lightbox" style="
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.9);
+  z-index:999;
+  align-items:center;
+  justify-content:center;
+">
+  <img id="lightboxImg" style="max-width:90%; max-height:90%; border-radius:15px;">
+</div>
+
+<script>
+  function openLightbox(imgSrc){
+    var lightbox = document.getElementById('lightbox');
+    var img = document.getElementById('lightboxImg');
+    img.src = imgSrc;
+    lightbox.style.display = 'flex';
+  }
+
+  document.getElementById('lightbox').onclick = function(){
+    this.style.display = 'none';
+  }
+
+  function openHire(){
+    document.getElementById('hireBox').style.display = 'block';
+  }
+
+  function closeHire(){
+    document.getElementById('hireBox').style.display = 'none';
+  }
+</script>
+
+<script>
+  function openLightbox(src){
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightboxImg').src = src;
+    lb.style.display = 'flex';
+  }
+
+  document.getElementById('lightbox').onclick = function(){
+    this.style.display = 'none';
+  }
+</script>
+
+<section id="about" class="about">
+  <h2>About Us</h2>
+  <p>
+    The Click Collection is a professional Photo / Video & Editing for brand creating cinematic,
+    high-quality visuals for individuals, brands, and events. Our goal is simple —
+    capture emotions, tell stories, and deliver premium results.
+  </p>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <p>Let’s create something beautiful together</p>
+  <p>📞 +91 6265350501, +91 8871114207</p>
+  <p>📧 theclickcollection30@gmail.com</p>
+  <a href="https://wa.me/918871114207" target="_blank">WhatsApp</a>
+  <a href="https://instagram.com/the_click_collection" target="_blank">Instagram</a>
+</section>
+
+<footer>
+  © 2026 The Click Collection | Photo & Video
+</footer>
+
+<!-- Hire Popup -->
+<div id="hireBox">
+  <div class="box">
+    <h3>Photography / Videography & Editing for you</h3>
+    <p>We Shoot, We Edit, You Enjoy</p>
+    <a href="tel:+918871114207">📞 +91 6265350501, +91 8871114207</a>
+    <a href="https://wa.me/918871114207" target="_blank">💬 WhatsApp</a>
+    <a href="mailto:theclickcollection30@gmail.com">📧 Email Us</a>
+    <button onclick="closeHire()">Close</button>
+  </div>
+</div>
+
+<script>
+  function openHire(){
+    document.getElementById('hireBox').style.display='block';
+  }
+  function closeHire(){
+    document.getElementById('hireBox').style.display='none';
+  }
+</script>
+
+</body>
+</html>
